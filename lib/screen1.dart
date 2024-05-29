@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:pharmecy/screen_two.dart';
-import 'package:pharmecy/utils/appImages.dart';
+import 'package:pharmecy/appImages.dart';
 
 class ScreenOne extends StatelessWidget {
   const ScreenOne({super.key});

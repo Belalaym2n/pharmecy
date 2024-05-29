@@ -1,9 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:pharmecy/screen_two.dart';
-import 'package:pharmecy/screens/data_model.dart';
-import 'package:pharmecy/utils/appImages.dart';
+import 'package:pharmecy/data_model.dart';
+import 'package:pharmecy/appImages.dart';
 
 
 class ScreenThree extends StatefulWidget {
@@ -140,8 +143,16 @@ class _DetailsState extends State<ScreenThree> {
               
               InkWell(
                 onTap: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) =>
-                      ScreenTwo()));
+                  Get.to(
+
+                   ScreenTwo(),
+                    transition: Transition.fadeIn,
+
+                    duration: Duration(
+                        milliseconds: 1000
+                    ),
+
+                  );
                 },
                 child: Column(
                   children: [

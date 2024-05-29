@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pharmecy/utils/appImages.dart';
-import 'package:pharmecy/utils/screenThree.dart';
+import 'package:get/get.dart';
+import 'package:pharmecy/appImages.dart';
+import 'package:pharmecy/screenThree.dart';
 
 class ScreenTwo extends StatefulWidget {
    ScreenTwo({super.key});
@@ -354,12 +355,20 @@ class _ScreenTwoState extends State<ScreenTwo> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context,
 
-                              MaterialPageRoute(builder:
-                                  (context) => ScreenThree(index: 7)
-                                ,)
+                          Get.to(
+                            ScreenThree(index: 7),
+                            transition: Transition.fadeIn,
+                            duration: Duration(
+                              milliseconds: 1000
+                            )
                           );
+                          // Navigator.push(context,
+                          //
+                          //     MaterialPageRoute(builder:
+                          //         (context) => ScreenThree(index: 7)
+                          //       ,)
+                          // );
 
                         },child:
                       Text("الاقصر",style: TextStyle(
@@ -372,12 +381,22 @@ class _ScreenTwoState extends State<ScreenTwo> {
 
                       InkWell(
                         onTap: () {
-                          Navigator.push(context,
+                          Get.to(
 
-                              MaterialPageRoute(builder:
-                                  (context) => ScreenThree(index: 7)
-                                ,)
+                              ScreenThree(index: 7),
+                              transition: Transition.fadeIn,
+
+                              duration: Duration(
+                                  milliseconds: 1000
+                              ),
+
                           );
+                          // Navigator.push(context,
+                          //
+                          //     MaterialPageRoute(builder:
+                          //         (context) => ScreenThree(index: 7)
+                          //       ,)
+                          // );
 
                         },child:
                       Icon(Icons.circle,color: Color(0xFF003F58),size: 25,),)
