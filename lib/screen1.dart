@@ -26,6 +26,7 @@ class ScreenOne extends StatelessWidget {
                 height: MediaQuery.of(context).size.height/1.15,
               ),
               Center(
+
                 child: ElevatedButton(
                     style:  ElevatedButton.styleFrom(
                       backgroundColor: Color(0XFF9FF7AC3EC),

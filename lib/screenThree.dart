@@ -22,12 +22,12 @@ double width=0;
 
 class _DetailsState extends State<ScreenThree> {
 
-  List<String> imageUrls = [
-    "assets/images/ph.jpeg",
-    "assets/images/ph.jpeg",
-    "assets/images/ph.jpeg"
-  ];
-
+  // List<String> imageUrls = [
+  //   "assets/images/ph.jpeg",
+  //   "assets/images/ph.jpeg",
+  //   "assets/images/ph.jpeg"
+  // ];
+  //
 
   int _currentIndex = 0;
 
@@ -61,11 +61,11 @@ class _DetailsState extends State<ScreenThree> {
             height: height*0.04,
           ),
 
-          Center(child: Text("اسم الفرع",style: TextStyle(
+          const Center(child: Text("اسم الفرع",style: TextStyle(
             fontSize: 24,fontWeight: FontWeight.w900
           ),)),
           Center(child: Text("${DataModel.data[widget.index].pharmacyName}",
-              style: TextStyle(
+              style: const TextStyle(
           fontSize: 24,fontWeight: FontWeight.w900
           )),),
           SizedBox(
@@ -73,11 +73,17 @@ class _DetailsState extends State<ScreenThree> {
           ),
 
           CarouselSlider(
+
             options: CarouselOptions(
+              //
+              // autoPlayInterval:  Duration(
+              //   seconds: 4
+              // ),
 
               autoPlay: true,
+
               autoPlayCurve: Curves.linear,
-              height: height * 0.3,
+              height: height * 0.35,
               aspectRatio: 16 / 9,
               viewportFraction: 0.93,
               initialPage: 0,
@@ -92,21 +98,45 @@ class _DetailsState extends State<ScreenThree> {
                 });
               },
             ),
-            items: imageUrls.map((imageUrl) {
-              return Container(
+            items: DataModel.data[widget.index].images.map((imageUrl) {
+              return SizedBox(
                 width: double.infinity,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child:Container(
-                    width: double.infinity,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.asset(
-                        imageUrl,
+                  child:Stack(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        height: height*0.28,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.asset(
+                            imageUrl,
 
-                        fit: BoxFit.cover,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: height*0.26,
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:
+
+                              List.generate(
+                                DataModel.data[widget.index].images.length,
+                                    (index) =>
+                                    buildDot(index, context),
+                              ),
+                            ),
+                          ),
+                        ])
+
+                    ],
                   ),
                 ),
               );
@@ -116,11 +146,11 @@ class _DetailsState extends State<ScreenThree> {
           SizedBox(
             height: height*0.02,
           ),
-          Center(child: Text("${DataModel.data[widget.index].manager}",style: TextStyle(
+          Center(child: Text("${DataModel.data[widget.index].manager}",style: const TextStyle(
             fontWeight: FontWeight.bold,fontSize: 24
           ),)),
           Center(
-            child: Text("${DataModel.data[widget.index].start}",style: TextStyle(
+            child: Text("${DataModel.data[widget.index].start}",style: const TextStyle(
                 fontWeight: FontWeight.bold,fontSize: 24
             )),
           ),
@@ -130,7 +160,7 @@ class _DetailsState extends State<ScreenThree> {
 
           Row(
             children: [
-              Image(image: AssetImage(AppImages.screen4),
+              Image(image: const AssetImage(AppImages.screen4),
                 width: width*0.5,
                 height: height*0.19,
 
@@ -148,7 +178,7 @@ class _DetailsState extends State<ScreenThree> {
                    ScreenTwo(),
                     transition: Transition.fadeIn,
 
-                    duration: Duration(
+                    duration: const Duration(
                         milliseconds: 1000
                     ),
 
@@ -156,7 +186,7 @@ class _DetailsState extends State<ScreenThree> {
                 },
                 child: Column(
                   children: [
-                    Image(image: AssetImage(AppImages.screen3,),
+                    Image(image: const AssetImage(AppImages.screen3,),
                       width: width*0.4,
                       height: height*0.1,
 
@@ -164,7 +194,7 @@ class _DetailsState extends State<ScreenThree> {
 
 
                     ),
-                    Text("الرجوع للخريطة",style: TextStyle(
+                    const Text("الرجوع للخريطة",style: TextStyle(
                       fontSize: 20,fontWeight: FontWeight.w800
                     ),)
                   ],
@@ -181,6 +211,17 @@ class _DetailsState extends State<ScreenThree> {
     );
   }
 
-
+  Container buildDot(int index, BuildContext context) {
+    return Container(
+      height: 10.0,
+      width:  10,
+      margin: const EdgeInsets.only(right: 5),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+         // / borderRadius: BorderRadius.circular(6),
+          color:_currentIndex == index ? Color(0XFF9FF7AC3EC):
+           Colors.white),
+    );
+  }
 }
 
